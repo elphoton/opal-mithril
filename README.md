@@ -1,8 +1,9 @@
 # Mithril support for Opal
 
 ## Description
+Ruby in the front !
 
-Opal wrapper for [mithril](https://mithril.js.org/) javascript library. For more information see [ wiki page](https://github.com/MithrilJS/mithril.js/wiki).
+[Opal](http://opalrb.com/) wrapper for [mithril js](https://mithril.js.org/) javascript library. For more information see [ wiki page](https://github.com/MithrilJS/mithril.js/wiki).
 
 forked from : [opal-virtual-dom](https://github.com/fazibear/opal-virtual-dom)
 
