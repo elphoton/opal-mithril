@@ -58,8 +58,9 @@ class SampleList
     # use bang method to define element id
     # to bind event use onXXX(:callback_name) or onXXX(method(:callback_name))
 
-    # <p id="example">
+    # <div id="app">
     div.app! do
+      # <p id="example">
       p.example! do
         # <ul class="simple-list">
         ul.simple_list.oncreate(:create_hook) do
