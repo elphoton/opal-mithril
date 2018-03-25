@@ -1,15 +1,12 @@
-module VirtualDOM
+module Mithril
   module Wrapper
-    def create(vnode)
-      `virtualDom.create(#{vnode})`
+    def mount(div, app)
+      `#{app}.view = function() { return #{app}.$view().$to_n(); }`
+      `m.mount(#{div.to_n}, #{app});`
     end
 
-    def diff(old, new)
-      `virtualDom.diff(#{old}, #{new})`
-    end
-
-    def patch(dom, diff)
-      `virtualDom.patch(#{dom}, #{diff})`
+    def render(div, app)
+      `m.render(#{div.to_n}, #{app}.$render().$to_n());`
     end
   end
 end

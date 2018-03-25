@@ -1,21 +1,46 @@
-module VirtualDOM
-  class VirtualNode
-    #include VirtualDOM::DOM
+module Mithril
+  class Node
+    attr_reader :children
 
-    attr_reader :name, :params, :children
+    def initialize(dom, name)
+      @dom = dom
+      @classNames = [ name ]
+      @params = {}
+      @children = []
+    end
 
-    def initialize(name, params = {}, children = [])
-      @name = name
-      @params = params
-      @children = children
+    def method_missing(clazz, arg = nil, &block)
+      clazz = clazz.gsub('_', '-').gsub('--', '_')
+      if clazz.start_with?('on') and arg
+        arg = @dom.method(arg) if arg.is_a? String or arg.is_a? Symbol
+        @params[clazz] = event_callback(arg)
+      elsif clazz.end_with?('!')
+        @params[id] = clazz[0..-2]
+      else
+        @classNames << clazz
+      end
+      @dom.process_block(block) if block_given?
+      self
+    end
+
+    def text(string)
+      @children = string.to_s
+      self
+    end
+
+    def event_callback(v)
+      proc do |e|
+        v.call(Support.wrap_event(e))
+      end
     end
 
     def to_n
-      `virtualDom.h(#{@name}, #{@params.to_n}, #{@children})`
+      tag = @classNames.join(".")
+      `m(#{tag}, #{@params.to_n}, #{@children.to_n})`
     end
 
     def to_s
-      "<#{@name}#{to_s_params}>#{to_s_children}</#{@name}>"
+      "<#{@classNames.join(".")} #{@params.inspect}/>"
     end
 
     def to_s_params

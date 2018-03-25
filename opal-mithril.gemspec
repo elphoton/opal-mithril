@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 Gem::Specification.new do |s|
-  s.name        = 'opal-virtual-dom'
-  s.version     = '0.6.0'
-  s.authors     = ['Michał Kalbarczyk']
-  s.email       = 'fazibear@gmail.com'
-  s.homepage    = 'http://github.com/fazibear/opal-virtual-dom'
-  s.summary     = 'virtual-dom wrapper for opal'
-  s.description = 'virtual-dom wrapper for opal'
+  s.name        = 'opal-mithril'
+  s.version     = '0.1.0'
+  s.authors     = ['El Photon']
+  s.email       = 'elphotono@gmail.com'
+  s.homepage    = 'https://github.com/elphoton/opal-mithril'
+  s.summary     = 'mithril wrapper for opal'
+  s.description = 'mithril wrapper for opal'
   s.license     = 'MIT'
 
   s.files         = `git ls-files`.split("\n")

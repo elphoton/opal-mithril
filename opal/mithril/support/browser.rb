@@ -1,4 +1,4 @@
-module VirtualDOM
+module Mithril
   module Support
     module_function
 

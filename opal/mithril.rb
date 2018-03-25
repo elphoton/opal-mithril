@@ -1,11 +1,10 @@
-require 'vendor/virtual-dom'
-require 'virtual_dom/dom'
-require 'virtual_dom/virtual_node'
-require 'virtual_dom/wrapper'
-require 'virtual_dom/hook'
-require 'virtual_dom/support'
+require 'vendor/mithril'
+require 'mithril/dom'
+require 'mithril/node'
+require 'mithril/wrapper'
+require 'mithril/support'
 
-module VirtualDOM
-  include VirtualDOM::DOM
-  extend VirtualDOM::Wrapper
+module Mithril
+  include Mithril::DOM
+  extend Mithril::Wrapper
 end
