@@ -65,9 +65,7 @@ class SampleList
       p.example! do
         # <ul class="simple-list">
         ul.simple_list.oncreate(:create_hook) do
-          @elements.each do |string|
-            li.text(string)
-          end
+          @elements.each { |string| li.text(string) }
         end
       end
 
