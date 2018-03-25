@@ -1,1 +1,1 @@
-require 'virtual_dom'
+require 'mithril'
