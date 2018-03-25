@@ -78,9 +78,6 @@ class SampleList
 end
 
 $document.ready do
-  list = SampleList.new()
-
-  Mithril.mount($document.body, list)
-  # `m.render(document.body, #{list.view.to_n})`
+  Mithril.mount($document.body, SampleList.new())
 end
 ```
