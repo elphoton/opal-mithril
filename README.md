@@ -71,7 +71,6 @@ class SampleList
       end
 
       # I recommend the use of tachyons css to embed the css in ruby :
-      # I recommend the use of tachyons css to embed the css in ruby :
       div.grow.no_underline.br_pill.ph3.pv2.mb2.dib.white.bg_hot_pink.onclick(:on_reverse) do
         text("click on me to reverse the list !")
       end
