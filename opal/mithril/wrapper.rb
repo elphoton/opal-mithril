@@ -8,5 +8,9 @@ module Mithril
     def render(div, app)
       `m.render(#{div.to_n}, #{app}.$render().$to_n());`
     end
+
+    def redraw()
+      `m.redraw()`
+    end
   end
 end
