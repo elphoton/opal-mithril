@@ -1,12 +1,13 @@
 module Mithril
   class Node
-    attr_reader :children
+    attr_reader :params, :children, :styles
 
     def initialize(dom, name)
       @dom = dom
       @classNames = [ name ]
       @params = {}
       @children = []
+      @styles = []
     end
 
     def method_missing(clazz, arg = nil, &block)
@@ -15,11 +16,18 @@ module Mithril
         arg = @dom.method(arg) if arg.is_a? String or arg.is_a? Symbol
         @params[clazz] = event_callback(arg)
       elsif clazz.end_with?('!')
-        @params[id] = clazz[0..-2]
+        @params[:id] = clazz[0..-2]
+      elsif clazz.end_with?('?')
+        @classNames << clazz[0..-2] if arg
       else
         @classNames << clazz
       end
-      @dom.process_block(block) if block_given?
+
+      process_block(block)
+    end
+
+    def process_block(block)
+      @dom.process_block(block) if block
       self
     end
 
@@ -36,6 +44,7 @@ module Mithril
 
     def to_n
       tag = @classNames.join(".")
+      params[:style] = @styles.join('') unless @styles.empty?
       `m(#{tag}, #{@params.to_n}, #{@children.to_n})`
     end
 

@@ -26,10 +26,10 @@ module Mithril
       not @@nodes_stack.empty?
     end
 
-    def create_node(tag, &block)
+    def create_node(tag, block=nil)
       @current_node = Node.new(self, tag)
       parent.children << @current_node if parent?
-      process_block(block) if block_given?
+      process_block(block) if block
       @current_node
     end
 
