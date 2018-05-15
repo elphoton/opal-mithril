@@ -36,7 +36,7 @@ module Mithril
 
     def process_block(block)
       @@nodes_stack << @current_node
-      block.call
+      block.call if block
       @@nodes_stack.pop
     end
 
