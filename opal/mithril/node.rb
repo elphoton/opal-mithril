@@ -1,6 +1,6 @@
 module Mithril
   class Node
-    attr_reader :params, :children, :styles
+    attr_reader :params, :children, :styles, :classNames
 
     def initialize(dom, name)
       @dom = dom
